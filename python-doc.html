@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python for Data Science - Complete Guide</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      header p {
+        font-size: 1.2em;
+        opacity: 0.9;
+      }
+
+      nav {
+        background: #f8f9fa;
+        padding: 20px 40px;
+        border-bottom: 3px solid #667eea;
+      }
+
+      nav h3 {
+        color: #667eea;
+        margin-bottom: 15px;
+      }
+
+      nav ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+      }
+
+      nav a {
+        color: #555;
+        text-decoration: none;
+        padding: 8px 15px;
+        display: block;
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+
+      nav a:hover {
+        background: #667eea;
+        color: white;
+        transform: translateX(5px);
+      }
+
+      main {
+        padding: 40px;
+      }
+
+      section {
+        margin-bottom: 50px;
+      }
+
+      h2 {
+        color: #667eea;
+        font-size: 2em;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #667eea;
+      }
+
+      h3 {
+        color: #764ba2;
+        font-size: 1.5em;
+        margin: 25px 0 15px 0;
+      }
+
+      h4 {
+        color: #555;
+        font-size: 1.2em;
+        margin: 20px 0 10px 0;
+      }
+
+      p {
+        margin-bottom: 15px;
+        color: #555;
+      }
+
+      .code-block {
+        background: #282c34;
+        color: #abb2bf;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 15px 0;
+        border-left: 4px solid #667eea;
+      }
+
+      .code-block pre {
+        margin: 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.95em;
+        line-height: 1.5;
+      }
+
+      .keyword {
+        color: #c678dd;
+      }
+
+      .string {
+        color: #98c379;
+      }
+
+      .number {
+        color: #d19a66;
+      }
+
+      .comment {
+        color: #5c6370;
+        font-style: italic;
+      }
+
+      .function {
+        color: #61afef;
+      }
+
+      .highlight-box {
+        background: #f0f7ff;
+        border-left: 4px solid #667eea;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+
+      .success-box {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-color: #667eea;
+      }
+
+      .card h4 {
+        color: #667eea;
+        margin-top: 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: white;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+        font-weight: bold;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      .exercise {
+        background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border: 2px solid #667eea;
+      }
+
+      .exercise h4 {
+        color: #667eea;
+        margin-top: 0;
+      }
+
+      footer {
+        background: #2d3748;
+        color: white;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #667eea;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 24px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s;
+      }
+
+      .back-to-top:hover {
+        background: #764ba2;
+        transform: translateY(-5px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🐍 Python for Data Science</h1>
+        <p>Master Core Python Concepts for Data Analysis</p>
+      </header>
+
+      <nav>
+        <h3>📚 Table of Contents</h3>
+        <ul>
+          <li><a href="#what-is-python">What is Python</a></li>
+          <li><a href="#why-python-ai">Why Python for AI</a></li>
+          <li><a href="#variables">Variables & Data Types</a></li>
+          <li><a href="#input-output">Input & Output</a></li>
+          <li><a href="#comments">Comments</a></li>
+          <li><a href="#operators">Types of Operators</a></li>
+          <li><a href="#lists">Lists</a></li>
+          <li><a href="#dictionaries">Dictionaries</a></li>
+          <li><a href="#tuples">Tuples</a></li>
+          <li><a href="#sets">Sets</a></li>
+          <li><a href="#comprehensions">Comprehensions</a></li>
+          <li><a href="#functions">Functions</a></li>
+          <li><a href="#file-io">File I/O</a></li>
+          <li><a href="#data-processing">Data Processing</a></li>
+          <li><a href="#statistics">Statistics</a></li>
+          <li><a href="#exercises">Practice Exercises</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <!-- WHAT IS PYTHON SECTION -->
+        <section id="what-is-python">
+          <h2>🐍 What is Python?</h2>
+          <p>
+            Python is a high-level, interpreted programming language known for
+            its simplicity and readability. Created by Guido van Rossum and
+            first released in 1991, Python emphasizes code readability with its
+            clean syntax and indentation-based structure.
+          </p>
+
+          <h3>Key Characteristics</h3>
+          <div class="grid">
+            <div class="card">
+              <h4>🔤 Easy to Learn</h4>
+              <p>
+                Python's syntax is clear and intuitive, making it perfect for
+                beginners while being powerful enough for experts.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>🔧 Interpreted Language</h4>
+              <p>
+                Code is executed line by line, making debugging easier and
+                development faster.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>🎯 Versatile</h4>
+              <p>
+                Used in web development, data science, AI, automation,
+                scientific computing, and more.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>📚 Rich Libraries</h4>
+              <p>
+                Extensive standard library and thousands of third-party packages
+                for every need.
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <strong>💡 Fun Fact:</strong> Python is named after the British
+            comedy series "Monty Python's Flying Circus," not the snake!
+          </div>
+        </section>
+
+        <!-- WHY PYTHON FOR AI SECTION -->
+        <section id="why-python-ai">
+          <h2>🤖 Why Python for AI?</h2>
+          <p>
+            Python has become the dominant language in Artificial Intelligence
+            and Machine Learning. Here's why:
+          </p>
+
+          <h3>Advantages for AI Development</h3>
+          <div class="grid">
+            <div class="card">
+              <h4>📊 Powerful Libraries</h4>
+              <p>
+                <strong>NumPy & Pandas:</strong> Data manipulation and analysis
+              </p>
+              <p>
+                <strong>TensorFlow & PyTorch:</strong> Deep learning frameworks
+              </p>
+              <p><strong>Scikit-learn:</strong> Machine learning algorithms</p>
+              <p><strong>Keras:</strong> Neural networks API</p>
+            </div>
+
+            <div class="card">
+              <h4>🚀 Rapid Prototyping</h4>
+              <p>
+                Quickly test ideas and iterate on models without complex syntax
+                or compilation steps.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>👥 Large Community</h4>
+              <p>
+                Millions of developers, extensive documentation, tutorials, and
+                support forums.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>🔗 Integration</h4>
+              <p>
+                Easily integrates with C/C++ for performance-critical operations
+                and supports various data formats.
+              </p>
+            </div>
+          </div>
+
+          <div class="success-box">
+            <strong>🎯 Industry Standard:</strong> Major tech companies like
+            Google, Facebook, Netflix, and NASA use Python for AI and data
+            science projects.
+          </div>
+        </section>
+
+        <!-- VARIABLES AND DATA TYPES SECTION -->
+        <section id="variables">
+          <h2>📦 Variables and Data Types</h2>
+          <p>
+            Variables store data values. Python is dynamically typed, meaning
+            you don't need to declare variable types.
+          </p>
+
+          <h3>Creating Variables</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Variables are created when you assign a value</span>
+name = <span class="string">"Alice"</span>
+age = <span class="number">25</span>
+height = <span class="number">5.6</span>
+is_student = <span class="keyword">True</span>
+
+<span class="comment"># Multiple assignment</span>
+x, y, z = <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>
+
+<span class="comment"># Same value to multiple variables</span>
+a = b = c = <span class="number">0</span></pre>
+          </div>
+
+          <h3>Core Data Types</h3>
+          <table>
+            <tr>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Example</th>
+            </tr>
+            <tr>
+              <td><strong>int</strong></td>
+              <td>Whole numbers</td>
+              <td><code>42, -17, 1000</code></td>
+            </tr>
+            <tr>
+              <td><strong>float</strong></td>
+              <td>Decimal numbers</td>
+              <td><code>3.14, -0.5, 2.0</code></td>
+            </tr>
+            <tr>
+              <td><strong>str</strong></td>
+              <td>Text/strings</td>
+              <td><code>"Hello", 'Python'</code></td>
+            </tr>
+            <tr>
+              <td><strong>bool</strong></td>
+              <td>Boolean values</td>
+              <td><code>True, False</code></td>
+            </tr>
+            <tr>
+              <td><strong>list</strong></td>
+              <td>Ordered, mutable collection</td>
+              <td><code>[1, 2, 3]</code></td>
+            </tr>
+            <tr>
+              <td><strong>tuple</strong></td>
+              <td>Ordered, immutable collection</td>
+              <td><code>(1, 2, 3)</code></td>
+            </tr>
+            <tr>
+              <td><strong>dict</strong></td>
+              <td>Key-value pairs</td>
+              <td><code>{"name": "Alice"}</code></td>
+            </tr>
+            <tr>
+              <td><strong>set</strong></td>
+              <td>Unordered unique elements</td>
+              <td><code>{1, 2, 3}</code></td>
+            </tr>
+          </table>
+
+          <h3>Type Conversion</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Converting between types</span>
+x = <span class="string">"123"</span>
+num = <span class="function">int</span>(x)           <span class="comment"># String to integer: 123</span>
+decimal = <span class="function">float</span>(x)      <span class="comment"># String to float: 123.0</span>
+text = <span class="function">str</span>(<span class="number">456</span>)         <span class="comment"># Integer to string: "456"</span>
+
+<span class="comment"># Checking types</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="number">42</span>))         <span class="comment"># &lt;class 'int'&gt;</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="number">3.14</span>))       <span class="comment"># &lt;class 'float'&gt;</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="string">"Hello"</span>))    <span class="comment"># &lt;class 'str'&gt;</span>
+
+<span class="comment"># Type checking</span>
+<span class="keyword">if</span> <span class="function">isinstance</span>(x, <span class="function">int</span>):
+    <span class="function">print</span>(<span class="string">"x is an integer"</span>)</pre>
+          </div>
+
+          <h3>String Operations</h3>
+          <div class="code-block">
+            <pre>text = <span class="string">"Python Programming"</span>
+
+<span class="comment"># String methods</span>
+<span class="function">print</span>(text.<span class="function">lower</span>())        <span class="comment"># "python programming"</span>
+<span class="function">print</span>(text.<span class="function">upper</span>())        <span class="comment"># "PYTHON PROGRAMMING"</span>
+<span class="function">print</span>(text.<span class="function">replace</span>(<span class="string">"Python"</span>, <span class="string">"Java"</span>))  <span class="comment"># "Java Programming"</span>
+<span class="function">print</span>(text.<span class="function">split</span>())        <span class="comment"># ['Python', 'Programming']</span>
+
+<span class="comment"># String slicing</span>
+<span class="function">print</span>(text[<span class="number">0</span>:<span class="number">6</span>])         <span class="comment"># "Python"</span>
+<span class="function">print</span>(text[::<span class="number">2</span>])          <span class="comment"># "Pto rgamn"</span>
+
+<span class="comment"># Concatenation</span>
+greeting = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="string">"World"</span>
+repeated = <span class="string">"Ha"</span> * <span class="number">3</span>      <span class="comment"># "HaHaHa"</span></pre>
+          </div>
+        </section>
+
+        <!-- INPUT AND OUTPUT SECTION -->
+        <section id="input-output">
+          <h2>💬 Input and Output</h2>
+          <p>
+            Interacting with users and displaying information is fundamental to
+            programming.
+          </p>
+
+          <h3>Output with print()</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Basic printing</span>
+<span class="function">print</span>(<span class="string">"Hello, World!"</span>)
+
+<span class="comment"># Multiple items</span>
+<span class="function">print</span>(<span class="string">"Name:"</span>, <span class="string">"Alice"</span>, <span class="string">"Age:"</span>, <span class="number">25</span>)
+
+<span class="comment"># Formatting with f-strings (Python 3.6+)</span>
+name = <span class="string">"Bob"</span>
+age = <span class="number">30</span>
+<span class="function">print</span>(<span class="function">f</span><span class="string">"My name is {name} and I am {age} years old"</span>)
+
+<span class="comment"># Custom separator and ending</span>
+<span class="function">print</span>(<span class="string">"Python"</span>, <span class="string">"is"</span>, <span class="string">"awesome"</span>, sep=<span class="string">"-"</span>)  <span class="comment"># Python-is-awesome</span>
+<span class="function">print</span>(<span class="string">"Loading"</span>, end=<span class="string">"... "</span>)  <span class="comment"># No newline at end</span>
+
+<span class="comment"># Formatting numbers</span>
+pi = <span class="number">3.14159265359</span>
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Pi to 2 decimals: {pi:.2f}"</span>)  <span class="comment"># 3.14</span></pre>
+          </div>
+
+          <h3>Input from Users</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Getting user input (always returns a string)</span>
+name = <span class="function">input</span>(<span class="string">"Enter your name: "</span>)
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Hello, {name}!"</span>)
+
+<span class="comment"># Converting input to numbers</span>
+age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your age: "</span>))
+height = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Enter your height in meters: "</span>))
+
+<span class="comment"># Multiple inputs on one line</span>
+x, y = <span class="function">input</span>(<span class="string">"Enter two numbers separated by space: "</span>).<span class="function">split</span>()
+x, y = <span class="function">int</span>(x), <span class="function">int</span>(y)</pre>
+          </div>
+
+          <div class="warning-box">
+            <strong>⚠️ Important:</strong> Always validate user input! The
+            <code>input()</code> function returns a string, so convert it to the
+            appropriate type and handle potential errors.
+          </div>
+        </section>
+
+        <!-- COMMENTS SECTION -->
+        <section id="comments">
+          <h2>📝 Comments</h2>
+          <p>
+            Comments help explain code and are ignored by Python during
+            execution.
+          </p>
+
+          <div class="code-block">
+            <pre><span class="comment"># Single-line comment</span>
+x = <span class="number">5</span>  <span class="comment"># This is also a comment</span>
+
+<span class="comment">"""
+Multi-line comment or docstring
+Used for longer explanations or
+function/class documentation
+"""</span>
+
+<span class="comment">'''
+Triple quotes also work
+for multi-line comments
+'''</span>
+
+<span class="keyword">def</span> <span class="function">calculate_average</span>(numbers):
+    <span class="comment">"""
+    Calculate the average of a list of numbers.
+    
+    Args:
+        numbers (list): List of numeric values
+        
+    Returns:
+        float: The average of the numbers
+    """</span>
+    <span class="keyword">return</span> <span class="function">sum</span>(numbers) / <span class="function">len</span>(numbers)</pre>
+          </div>
+
+          <div class="success-box">
+            <strong>💡 Best Practice:</strong> Write comments to explain WHY
+            you're doing something, not WHAT you're doing. Good code should be
+            self-explanatory for the "what."
+          </div>
+        </section>
+
+        <!-- OPERATORS SECTION -->
+        <section id="operators">
+          <h2>⚙️ Types of Operators</h2>
+          <p>
+            Operators are symbols that perform operations on variables and
+            values.
+          </p>
+
+          <h3>Arithmetic Operators</h3>
+          <div class="code-block">
+            <pre>a = <span class="number">10</span>
+b = <span class="number">3</span>
+
+<span class="function">print</span>(a + b)    <span class="comment"># Addition: 13</span>
+<span class="function">print</span>(a - b)    <span class="comment"># Subtraction: 7</span>
+<span class="function">print</span>(a * b)    <span class="comment"># Multiplication: 30</span>
+<span class="function">print</span>(a / b)    <span class="comment"># Division: 3.333...</span>
+<span class="function">print</span>(a // b)   <span class="comment"># Floor division: 3</span>
+<span class="function">print</span>(a % b)    <span class="comment"># Modulus (remainder): 1</span>
+<span class="function">print</span>(a ** b)   <span class="comment"># Exponentiation: 1000</span></pre>
+          </div>
+
+          <h3>Comparison Operators</h3>
+          <div class="code-block">
+            <pre>x = <span class="number">5</span>
+y = <span class="number">10</span>
+
+<span class="function">print</span>(x == y)   <span class="comment"># Equal: False</span>
+<span class="function">print</span>(x != y)   <span class="comment"># Not equal: True</span>
+<span class="function">print</span>(x &gt; y)    <span class="comment"># Greater than: False</span>
+<span class="function">print</span>(x &lt; y)    <span class="comment"># Less than: True</span>
+<span class="function">print</span>(x &gt;= y)   <span class="comment"># Greater than or equal: False</span>
+<span class="function">print</span>(x &lt;= y)   <span class="comment"># Less than or equal: True</span></pre>
+          </div>
+
+          <h3>Logical Operators</h3>
+          <div class="code-block">
+            <pre>a = <span class="keyword">True</span>
+b = <span class="keyword">False</span>
+
+<span class="function">print</span>(a <span class="keyword">and</span> b)  <span class="comment"># Logical AND: False</span>
+<span class="function">print</span>(a <span class="keyword">or</span> b)   <span class="comment"># Logical OR: True</span>
+<span class="function">print</span>(<span class="keyword">not</span> a)     <span class="comment"># Logical NOT: False</span>
+
+<span class="comment"># Practical example</span>
+age = <span class="number">25</span>
+has_license = <span class="keyword">True</span>
+
+<span class="keyword">if</span> age &gt;= <span class="number">18</span> <span class="keyword">and</span> has_license:
+    <span class="function">print</span>(<span class="string">"Can drive"</span>)</pre>
+          </div>
+
+          <h3>Assignment Operators</h3>
+          <div class="code-block">
+            <pre>x = <span class="number">10</span>       <span class="comment"># Simple assignment</span>
+
+x += <span class="number">5</span>      <span class="comment"># Same as: x = x + 5 → 15</span>
+x -= <span class="number">3</span>      <span class="comment"># Same as: x = x - 3 → 12</span>
+x *= <span class="number">2</span>      <span class="comment"># Same as: x = x * 2 → 24</span>
+x /= <span class="number">4</span>      <span class="comment"># Same as: x = x / 4 → 6.0</span>
+x //= <span class="number">2</span>     <span class="comment"># Same as: x = x // 2 → 3.0</span>
+x %= <span class="number">2</span>      <span class="comment"># Same as: x = x % 2 → 1.0</span>
+x **= <span class="number">3</span>     <span class="comment"># Same as: x = x ** 3 → 1.0</span></pre>
+          </div>
+
+          <h3>Membership Operators</h3>
+          <div class="code-block">
+            <pre>fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+
+<span class="function">print</span>(<span class="string">"apple"</span> <span class="keyword">in</span> fruits)      <span class="comment"># True</span>
+<span class="function">print</span>(<span class="string">"orange"</span> <span class="keyword">not in</span> fruits)  <span class="comment"># True</span>
+
+<span class="comment"># Works with strings too</span>
+text = <span class="string">"Python Programming"</span>
+<span class="function">print</span>(<span class="string">"Python"</span> <span class="keyword">in</span> text)         <span class="comment"># True</span></pre>
+          </div>
+
+          <h3>Identity Operators</h3>
+          <div class="code-block">
+            <pre>a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+b = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+c = a
+
+<span class="function">print</span>(a == b)   <span class="comment"># True (same values)</span>
+<span class="function">print</span>(a <span class="keyword">is</span> b)   <span class="comment"># False (different objects)</span>
+<span class="function">print</span>(a <span class="keyword">is</span> c)   <span class="comment"># True (same object)</span>
+
+<span class="function">print</span>(a <span class="keyword">is not</span> b)  <span class="comment"># True</span></pre>
+          </div>
+
+          <div class="highlight-box">
+            <strong>💡 Operator Precedence:</strong> Remember PEMDAS -
+            Parentheses, Exponents, Multiplication/Division,
+            Addition/Subtraction. Use parentheses to make your intentions clear!
+          </div>
+        </section>
+
+        <!-- LISTS SECTION -->
+        <section id="lists">
+          <h2>📋 Lists - Your Data Container</h2>
+          <p>
+            Lists are ordered, mutable collections that can store any type of
+            data. They're the backbone of data manipulation in Python.
+          </p>
+
+          <h3>Creating Lists</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Simple lists</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+names = [<span class="string">'Alice'</span>, <span class="string">'Bob'</span>, <span class="string">'Charlie'</span>]
+mixed = [<span class="number">1</span>, <span class="string">'hello'</span>, <span class="number">3.14</span>, <span class="keyword">True</span>]
+
+<span class="comment"># Empty list</span>
+empty_list = []
+
+<span class="comment"># List with range</span>
+numbers = <span class="function">list</span>(<span class="function">range</span>(<span class="number">10</span>))  <span class="comment"># [0, 1, 2, ..., 9]</span></pre>
+          </div>
+
+          <h3>Accessing Elements</h3>
+          <div class="code-block">
+            <pre>data = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>]
+
+<span class="comment"># Index from start (0-based)</span>
+first = data[<span class="number">0</span>]        <span class="comment"># 10</span>
+second = data[<span class="number">1</span>]       <span class="comment"># 20</span>
+
+<span class="comment"># Index from end</span>
+last = data[-<span class="number">1</span>]         <span class="comment"># 50</span>
+second_last = data[-<span class="number">2</span>]  <span class="comment"># 40</span>
+
+<span class="comment"># Slicing [start:end:step]</span>
+first_three = data[<span class="number">0</span>:<span class="number">3</span>]   <span class="comment"># [10, 20, 30]</span>
+every_second = data[::<span class="number">2</span>]  <span class="comment"># [10, 30, 50]</span>
+reversed_list = data[::-<span class="number">1</span>] <span class="comment"># [50, 40, 30, 20, 10]</span></pre>
+          </div>
+
+          <h3>Modifying Lists</h3>
+          <div class="code-block">
+            <pre>data = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+
+<span class="comment"># Adding elements</span>
+data.<span class="function">append</span>(<span class="number">4</span>)              <span class="comment"># [1, 2, 3, 4]</span>
+data.<span class="function">extend</span>([<span class="number">5</span>, <span class="number">6</span>])        <span class="comment"># [1, 2, 3, 4, 5, 6]</span>
+data.<span class="function">insert</span>(<span class="number">0</span>, <span class="number">0</span>)          <span class="comment"># [0, 1, 2, 3, 4, 5, 6]</span>
+
+<span class="comment"># Removing elements</span>
+data.<span class="function">remove</span>(<span class="number">3</span>)             <span class="comment"># Removes first occurrence of 3</span>
+popped = data.<span class="function">pop</span>()        <span class="comment"># Removes and returns last element</span>
+popped_index = data.<span class="function">pop</span>(<span class="number">0</span>) <span class="comment"># Removes element at index 0</span>
+<span class="keyword">del</span> data[<span class="number">1</span>]                <span class="comment"># Deletes element at index 1</span>
+
+<span class="comment"># Modifying elements</span>
+data[<span class="number">0</span>] = <span class="number">100</span>              <span class="comment"># Change first element</span></pre>
+          </div>
+
+          <h3>List Operations</h3>
+          <div class="grid">
+            <div class="card">
+              <h4>Length & Counting</h4>
+              <div class="code-block">
+                <pre>data = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>]
+<span class="function">len</span>(data)      <span class="comment"># 5</span>
+data.<span class="function">count</span>(<span class="number">2</span>)  <span class="comment"># 2</span></pre>
+              </div>
+            </div>
+
+            <div class="card">
+              <h4>Sorting</h4>
+              <div class="code-block">
+                <pre>data = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>]
+data.<span class="function">sort</span>()           <span class="comment"># In-place</span>
+sorted_data = <span class="function">sorted</span>(data) <span class="comment"># New list</span></pre>
+              </div>
+            </div>
+
+            <div class="card">
+              <h4>Reversing</h4>
+              <div class="code-block">
+                <pre>data = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+data.<span class="function">reverse</span>()  <span class="comment"># In-place</span>
+rev = data[::-<span class="number">1</span>] <span class="comment"># New list</span></pre>
+              </div>
+            </div>
+
+            <div class="card">
+              <h4>Finding Index</h4>
+              <div class="code-block">
+                <pre>data = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>]
+index = data.<span class="function">index</span>(<span class="number">20</span>)  <span class="comment"># 1</span>
+<span class="keyword">if</span> <span class="number">20</span> <span class="keyword">in</span> data:
+    <span class="function">print</span>(<span class="string">"Found!"</span>)</pre>
+              </div>
+            </div>
+          </div>
+
+          <h3>Iterating Through Lists</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Basic iteration</span>
+<span class="keyword">for</span> item <span class="keyword">in</span> data:
+    <span class="function">print</span>(item)
+
+<span class="comment"># With index</span>
+<span class="keyword">for</span> i, item <span class="keyword">in</span> <span class="function">enumerate</span>(data):
+    <span class="function">print</span>(<span class="function">f</span><span class="string">"Index {i}: {item}"</span>)
+
+<span class="comment"># Iterating multiple lists</span>
+names = [<span class="string">'Alice'</span>, <span class="string">'Bob'</span>, <span class="string">'Charlie'</span>]
+ages = [<span class="number">25</span>, <span class="number">30</span>, <span class="number">35</span>]
+
+<span class="keyword">for</span> name, age <span class="keyword">in</span> <span class="function">zip</span>(names, ages):
+    <span class="function">print</span>(<span class="function">f</span><span class="string">"{name} is {age} years old"</span>)</pre>
+          </div>
+
+          <div class="success-box">
+            <strong>💡 Best Practice:</strong> Use list methods like
+            <code>append()</code> and <code>extend()</code> instead of creating
+            new lists repeatedly for better performance.
+          </div>
+        </section>
+
+        <!-- DICTIONARIES SECTION -->
+        <section id="dictionaries">
+          <h2>📖 Dictionaries - Key-Value Pairs</h2>
+          <p>
+            Dictionaries store data as key-value pairs, providing fast lookups
+            and flexible data organization.
+          </p>
+
+          <h3>Creating Dictionaries</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Basic dictionary</span>
+student = {
+    <span class="string">'name'</span>: <span class="string">'Alice'</span>,
+    <span class="string">'age'</span>: <span class="number">20</span>,
+    <span class="string">'grades'</span>: [<span class="number">85</span>, <span class="number">90</span>, <span class="number">92</span>],
+    <span class="string">'city'</span>: <span class="string">'New York'</span>
+}
+
+<span class="comment"># Empty dictionary</span>
+empty_dict = {}
+
+<span class="comment"># From list of tuples</span>
+pairs = [(<span class="string">'a'</span>, <span class="number">1</span>), (<span class="string">'b'</span>, <span class="number">2</span>), (<span class="string">'c'</span>, <span class="number">3</span>)]
+dict_from_pairs = <span class="function">dict</span>(pairs)</pre>
+          </div>
+
+          <h3>Accessing and Modifying</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Accessing values</span>
+name = student[<span class="string">'name'</span>]              <span class="comment"># 'Alice'</span>
+age = student.<span class="function">get</span>(<span class="string">'age'</span>)          <span class="comment"># 20</span>
+major = student.<span class="function">get</span>(<span class="string">'major'</span>, <span class="string">'N/A'</span>) <span class="comment"># Safe access with default</span>
+
+<span class="comment"># Adding/updating</span>
+student[<span class="string">'major'</span>] = <span class="string">'Data Science'</span>
+student.<span class="function">update</span>({<span class="string">'gpa'</span>: <span class="number">3.8</span>, <span class="string">'year'</span>: <span class="number">2</span>})
+
+<span class="comment"># Removing</span>
+<span class="keyword">del</span> student[<span class="string">'city'</span>]
+removed = student.<span class="function">pop</span>(<span class="string">'year'</span>)
+student.<span class="function">clear</span>()  <span class="comment"># Remove all items</span></pre>
+          </div>
+
+          <h3>Dictionary Methods</h3>
+          <div class="code-block">
+            <pre>data = {<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>, <span class="string">'c'</span>: <span class="number">3</span>}
+
+<span class="comment"># Get all keys, values, items</span>
+keys = data.<span class="function">keys</span>()      <span class="comment"># dict_keys(['a', 'b', 'c'])</span>
+values = data.<span class="function">values</span>()  <span class="comment"># dict_values([1, 2, 3])</span>
+items = data.<span class="function">items</span>()    <span class="comment"># dict_items([('a', 1), ('b', 2), ('c', 3)])</span>
+
+<span class="comment"># Check if key exists</span>
+<span class="keyword">if</span> <span class="string">'a'</span> <span class="keyword">in</span> data:
+    <span class="function">print</span>(<span class="string">"Key 'a' exists"</span>)
+
+<span class="comment"># Iterating</span>
+<span class="keyword">for</span> key <span class="keyword">in</span> data:
+    <span class="function">print</span>(<span class="function">f</span><span class="string">"{key}: {data[key]}"</span>)
+
+<span class="keyword">for</span> key, value <span class="keyword">in</span> data.<span class="function">items</span>():
+    <span class="function">print</span>(<span class="function">f</span><span class="string">"{key}: {value}"</span>)</pre>
+          </div>
+
+          <h3>Nested Dictionaries</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Complex data structures</span>
+database = {
+    <span class="string">'user1'</span>: {
+        <span class="string">'name'</span>: <span class="string">'Alice'</span>,
+        <span class="string">'age'</span>: <span class="number">25</span>,
+        <span class="string">'skills'</span>: [<span class="string">'Python'</span>, <span class="string">'SQL'</span>]
+    },
+    <span class="string">'user2'</span>: {
+        <span class="string">'name'</span>: <span class="string">'Bob'</span>,
+        <span class="string">'age'</span>: <span class="number">30</span>,
+        <span class="string">'skills'</span>: [<span class="string">'R'</span>, <span class="string">'Statistics'</span>]
+    }
+}
+
+<span class="comment"># Accessing nested data</span>
+alice_age = database[<span class="string">'user1'</span>][<span class="string">'age'</span>]  <span class="comment"># 25</span>
+bob_skills = database[<span class="string">'user2'</span>][<span class="string">'skills'</span>]  <span class="comment"># ['R', 'Statistics']</span></pre>
+          </div>
+
+          <div class="highlight-box">
+            <strong>🎯 Use Case:</strong> Dictionaries are perfect for storing
+            structured data like CSV rows, JSON objects, and database records.
+          </div>
+        </section>
+
+        <!-- TUPLES SECTION -->
+        <section id="tuples">
+          <h2>🔒 Tuples - Immutable Sequences</h2>
+          <p>
+            Tuples are like lists, but immutable. They're faster and protect
+            data from accidental modification.
+          </p>
+
+          <div class="code-block">
+            <pre><span class="comment"># Creating tuples</span>
+coordinates = (<span class="number">10.5</span>, <span class="number">20.3</span>)
+rgb = (<span class="number">255</span>, <span class="number">128</span>, <span class="number">0</span>)
+single = (<span class="number">42</span>,)  <span class="comment"># Note the comma!</span>
+
+<span class="comment"># Unpacking</span>
+x, y = coordinates
+r, g, b = rgb
+
+<span class="comment"># Multiple assignment</span>
+name, age, city = (<span class="string">'Alice'</span>, <span class="number">25</span>, <span class="string">'NYC'</span>)
+
+<span class="comment"># Swapping values</span>
+a, b = <span class="number">1</span>, <span class="number">2</span>
+a, b = b, a  <span class="comment"># Now a=2, b=1</span>
+
+<span class="comment"># Returning multiple values</span>
+<span class="keyword">def</span> <span class="function">get_stats</span>(numbers):
+    <span class="keyword">return</span> <span class="function">min</span>(numbers), <span class="function">max</span>(numbers), <span class="function">sum</span>(numbers)/<span class="function">len</span>(numbers)
+
+minimum, maximum, average = <span class="function">get_stats</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</pre>
+          </div>
+
+          <div class="success-box">
+            <strong>💡 When to Use:</strong> Use tuples for fixed collections
+            like coordinates, RGB values, or function return values. Use lists
+            for collections that need to change.
+          </div>
+        </section>
+
+        <!-- SETS SECTION -->
+        <section id="sets">
+          <h2>🎯 Sets - Unique Collections</h2>
+          <p>
+            Sets store unique elements and provide fast membership testing and
+            set operations.
+          </p>
+
+          <div class="code-block">
+            <pre><span class="comment"># Creating sets</span>
+numbers = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>}
+unique = <span class="function">set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>])  <span class="comment"># {1, 2, 3, 4}</span>
+
+<span class="comment"># Adding and removing</span>
+numbers.<span class="function">add</span>(<span class="number">6</span>)
+numbers.<span class="function">remove</span>(<span class="number">3</span>)  <span class="comment"># Raises error if not found</span>
+numbers.<span class="function">discard</span>(<span class="number">3</span>) <span class="comment"># No error if not found</span>
+
+<span class="comment"># Set operations</span>
+a = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>}
+b = {<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>}
+
+union = a | b                <span class="comment"># {1, 2, 3, 4, 5, 6}</span>
+intersection = a & b         <span class="comment"># {3, 4}</span>
+difference = a - b           <span class="comment"># {1, 2}</span>
+symmetric_diff = a ^ b       <span class="comment"># {1, 2, 5, 6}</span>
+
+<span class="comment"># Fast membership testing</span>
+<span class="keyword">if</span> <span class="number">3</span> <span class="keyword">in</span> numbers:
+    <span class="function">print</span>(<span class="string">"Found!"</span>)  <span class="comment"># Very fast for large collections</span></pre>
+          </div>
+
+          <div class="highlight-box">
+            <strong>🚀 Performance Tip:</strong> Sets use hash tables, making
+            membership testing O(1) vs O(n) for lists. Use sets for "is X in
+            collection?" checks.
+          </div>
+        </section>
+
+        <!-- COMPREHENSIONS SECTION -->
+        <section id="comprehensions">
+          <h2>⚡ Comprehensions - Elegant Data Transformation</h2>
+          <p>
+            Comprehensions provide a concise way to create lists, dictionaries,
+            and sets from existing sequences.
+          </p>
+
+          <h3>List Comprehensions</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Basic syntax: [expression for item in iterable]</span>
+squares = [x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="function">range</span>(<span class="number">10</span>)]
+<span class="comment"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+
+<span class="comment"># With condition</span>
+evens = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="function">range</span>(<span class="number">20</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]
+<span class="comment"># [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+
+<span class="comment"># With if-else</span>
+labels = [<span class="string">'even'</span> <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">else</span> <span class="string">'odd'</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>)]
+<span class="comment"># ['even', 'odd', 'even', 'odd', 'even']</span>
+
+<span class="comment"># Nested comprehensions</span>
+matrix = [[i*j <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(<span class="number">3</span>)] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">3</span>)]
+<span class="comment"># [[0, 0, 0], [0, 1, 2], [0, 2, 4]]</span>
+
+<span class="comment"># Flattening nested lists</span>
+nested = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>]]
+flat = [item <span class="keyword">for</span> sublist <span class="keyword">in</span> nested <span class="keyword">for</span> item <span class="keyword">in</span> sublist]
+<span class="comment"># [1, 2, 3, 4, 5, 6]</span></pre>
+          </div>
+
+          <h3>Dictionary Comprehensions</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Basic dictionary comprehension</span>
+squares_dict = {x: x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>)}
+<span class="comment"># {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</span>
+
+<span class="comment"># From two lists</span>
+keys = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]
+values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+dict_from_lists = {k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> <span class="function">zip</span>(keys, values)}
+<span class="comment"># {'a': 1, 'b': 2, 'c': 3}</span>
+
+<span class="comment"># With condition</span>
+even_squares = {x: x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="function">range</span>(<span class="number">10</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>}
+<span class="comment"># {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}</span></pre>
+          </div>
+
+          <h3>Set Comprehensions</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Basic set comprehension</span>
+unique_lengths = {<span class="function">len</span>(word) <span class="keyword">for</span> word <span class="keyword">in</span> [<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'python'</span>]}
+<span class="comment"># {5, 6}</span>
+
+<span class="comment"># Remove duplicates and transform</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>]
+unique_squares = {x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> numbers}
+<span class="comment"># {1, 4, 9, 16}</span></pre>
+          </div>
+
+          <div class="success-box">
+            <strong>💡 Best Practice:</strong> Comprehensions are more Pythonic
+            and often faster than traditional loops. Use them for simple
+            transformations, but avoid overly complex nested comprehensions that
+            harm readability.
+          </div>
+        </section>
+
+        <!-- FUNCTIONS SECTION -->
+        <section id="functions">
+          <h2>🔧 Functions - Reusable Code Blocks</h2>
+          <p>
+            Functions help organize code into reusable blocks, making programs
+            more modular and maintainable.
+          </p>
+
+          <h3>Defining Functions</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Basic function</span>
+<span class="keyword">def</span> <span class="function">greet</span>(name):
+    <span class="keyword">return</span> <span class="function">f</span><span class="string">"Hello, {name}!"</span>
+
+result = <span class="function">greet</span>(<span class="string">"Alice"</span>)  <span class="comment"># "Hello, Alice!"</span>
+
+<span class="comment"># Function with multiple parameters</span>
+<span class="keyword">def</span> <span class="function">add</span>(a, b):
+    <span class="keyword">return</span> a + b
+
+<span class="comment"># Function with default parameters</span>
+<span class="keyword">def</span> <span class="function">power</span>(base, exponent=<span class="number">2</span>):
+    <span class="keyword">return</span> base ** exponent
+
+<span class="function">print</span>(<span class="function">power</span>(<span class="number">5</span>))      <span class="comment"># 25 (uses default)</span>
+<span class="function">print</span>(<span class="function">power</span>(<span class="number">5</span>, <span class="number">3</span>))   <span class="comment"># 125</span></pre>
+          </div>
+
+          <h3>Advanced Function Features</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Variable number of arguments</span>
+<span class="keyword">def</span> <span class="function">sum_all</span>(*args):
+    <span class="keyword">return</span> <span class="function">sum</span>(args)
+
+<span class="function">print</span>(<span class="function">sum_all</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))           <span class="comment"># 6</span>
+<span class="function">print</span>(<span class="function">sum_all</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))    <span class="comment"># 15</span>
+
+<span class="comment"># Keyword arguments</span>
+<span class="keyword">def</span> <span class="function">create_profile</span>(**kwargs):
+    <span class="keyword">for</span> key, value <span class="keyword">in</span> kwargs.<span class="function">items</span>():
+        <span class="function">print</span>(<span class="function">f</span><span class="string">"{key}: {value}"</span>)
+
+<span class="function">create_profile</span>(name=<span class="string">"Alice"</span>, age=<span class="number">25</span>, city=<span class="string">"NYC"</span>)
+
+<span class="comment"># Lambda functions (anonymous functions)</span>
+square = <span class="keyword">lambda</span> x: x**<span class="number">2</span>
+<span class="function">print</span>(<span class="function">square</span>(<span class="number">5</span>))  <span class="comment"># 25</span>
+
+<span class="comment"># Using lambda with map, filter</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+squared = <span class="function">list</span>(<span class="function">map</span>(<span class="keyword">lambda</span> x: x**<span class="number">2</span>, numbers))
+evens = <span class="function">list</span>(<span class="function">filter</span>(<span class="keyword">lambda</span> x: x % <span class="number">2</span> == <span class="number">0</span>, numbers))</pre>
+          </div>
+
+          <h3>Function Documentation</h3>
+          <div class="code-block">
+            <pre><span class="keyword">def</span> <span class="function">calculate_bmi</span>(weight, height):
+    <span class="comment">"""
+    Calculate Body Mass Index (BMI).
+    
+    Parameters:
+        weight (float): Weight in kilograms
+        height (float): Height in meters
+        
+    Returns:
+        float: BMI value
+        
+    Example:
+        >>> calculate_bmi(70, 1.75)
+        22.86
+    """</span>
+    <span class="keyword">return</span> weight / (height ** <span class="number">2</span>)</pre>
+          </div>
+
+          <div class="highlight-box">
+            <strong>💡 Best Practice:</strong> Keep functions focused on a
+            single task, use descriptive names, and document complex functions
+            with docstrings.
+          </div>
+        </section>
+
+        <!-- FILE I/O SECTION -->
+        <section id="file-io">
+          <h2>📁 File I/O - Reading and Writing Files</h2>
+          <p>
+            Python makes it easy to work with files for data storage and
+            processing.
+          </p>
+
+          <h3>Reading Files</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Reading entire file</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    content = file.<span class="function">read</span>()
+    <span class="function">print</span>(content)
+
+<span class="comment"># Reading line by line</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    <span class="keyword">for</span> line <span class="keyword">in</span> file:
+        <span class="function">print</span>(line.<span class="function">strip</span>())  <span class="comment"># Remove newline characters</span>
+
+<span class="comment"># Reading all lines into a list</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    lines = file.<span class="function">readlines</span>()
+    <span class="keyword">for</span> line <span class="keyword">in</span> lines:
+        <span class="function">print</span>(line.<span class="function">strip</span>())</pre>
+          </div>
+
+          <h3>Writing Files</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Writing to a file (overwrites existing content)</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'output.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> file:
+    file.<span class="function">write</span>(<span class="string">"Hello, World!\n"</span>)
+    file.<span class="function">write</span>(<span class="string">"Python is awesome!\n"</span>)
+
+<span class="comment"># Appending to a file</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'output.txt'</span>, <span class="string">'a'</span>) <span class="keyword">as</span> file:
+    file.<span class="function">write</span>(<span class="string">"Adding more content\n"</span>)
+
+<span class="comment"># Writing multiple lines</span>
+lines = [<span class="string">"Line 1\n"</span>, <span class="string">"Line 2\n"</span>, <span class="string">"Line 3\n"</span>]
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'output.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> file:
+    file.<span class="function">writelines</span>(lines)</pre>
+          </div>
+
+          <h3>Working with CSV Files</h3>
+          <div class="code-block">
+            <pre><span class="keyword">import</span> csv
+
+<span class="comment"># Reading CSV</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.csv'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    reader = csv.<span class="function">reader</span>(file)
+    <span class="keyword">for</span> row <span class="keyword">in</span> reader:
+        <span class="function">print</span>(row)  <span class="comment"># Each row is a list</span>
+
+<span class="comment"># Reading CSV with headers</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.csv'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    reader = csv.<span class="function">DictReader</span>(file)
+    <span class="keyword">for</span> row <span class="keyword">in</span> reader:
+        <span class="function">print</span>(row)  <span class="comment"># Each row is a dictionary</span>
+
+<span class="comment"># Writing CSV</span>
+data = [
+    [<span class="string">'Name'</span>, <span class="string">'Age'</span>, <span class="string">'City'</span>],
+    [<span class="string">'Alice'</span>, <span class="number">25</span>, <span class="string">'NYC'</span>],
+    [<span class="string">'Bob'</span>, <span class="number">30</span>, <span class="string">'LA'</span>]
+]
+
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'output.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> file:
+    writer = csv.<span class="function">writer</span>(file)
+    writer.<span class="function">writerows</span>(data)</pre>
+          </div>
+
+          <div class="warning-box">
+            <strong>⚠️ Important:</strong> Always use the
+            <code>with</code> statement when working with files. It ensures
+            files are properly closed even if an error occurs.
+          </div>
+        </section>
+
+        <!-- DATA PROCESSING SECTION -->
+        <section id="data-processing">
+          <h2>🔄 Data Processing Techniques</h2>
+          <p>
+            Essential techniques for transforming and analyzing data in Python.
+          </p>
+
+          <h3>Filtering Data</h3>
+          <div class="code-block">
+            <pre>data = [<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">90</span>, <span class="number">88</span>, <span class="number">76</span>, <span class="number">95</span>]
+
+<span class="comment"># Filter scores above 80</span>
+high_scores = [score <span class="keyword">for</span> score <span class="keyword">in</span> data <span class="keyword">if</span> score &gt; <span class="number">80</span>]
+<span class="comment"># [85, 92, 90, 88, 95]</span>
+
+<span class="comment"># Using filter function</span>
+high_scores = <span class="function">list</span>(<span class="function">filter</span>(<span class="keyword">lambda</span> x: x &gt; <span class="number">80</span>, data))
+
+<span class="comment"># Filter by multiple conditions</span>
+students = [
+    {<span class="string">'name'</span>: <span class="string">'Alice'</span>, <span class="string">'grade'</span>: <span class="number">85</span>, <span class="string">'age'</span>: <span class="number">20</span>},
+    {<span class="string">'name'</span>: <span class="string">'Bob'</span>, <span class="string">'grade'</span>: <span class="number">92</span>, <span class="string">'age'</span>: <span class="number">22</span>},
+    {<span class="string">'name'</span>: <span class="string">'Charlie'</span>, <span class="string">'grade'</span>: <span class="number">78</span>, <span class="string">'age'</span>: <span class="number">21</span>}
+]
+
+top_students = [s <span class="keyword">for</span> s <span class="keyword">in</span> students <span class="keyword">if</span> s[<span class="string">'grade'</span>] &gt; <span class="number">80</span> <span class="keyword">and</span> s[<span class="string">'age'</span>] &gt; <span class="number">20</span>]</pre>
+          </div>
+
+          <h3>Sorting Data</h3>
+          <div class="code-block">
+            <pre>numbers = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>]
+
+<span class="comment"># Sort ascending</span>
+sorted_asc = <span class="function">sorted</span>(numbers)  <span class="comment"># [1, 1, 2, 3, 4, 5, 9]</span>
+
+<span class="comment"># Sort descending</span>
+sorted_desc = <span class="function">sorted</span>(numbers, reverse=<span class="keyword">True</span>)  <span class="comment"># [9, 5, 4, 3, 2, 1, 1]</span>
+
+<span class="comment"># Sort list of dictionaries</span>
+students = [
+    {<span class="string">'name'</span>: <span class="string">'Alice'</span>, <span class="string">'grade'</span>: <span class="number">85</span>},
+    {<span class="string">'name'</span>: <span class="string">'Bob'</span>, <span class="string">'grade'</span>: <span class="number">92</span>},
+    {<span class="string">'name'</span>: <span class="string">'Charlie'</span>, <span class="string">'grade'</span>: <span class="number">78</span>}
+]
+
+<span class="comment"># Sort by grade</span>
+sorted_by_grade = <span class="function">sorted</span>(students, key=<span class="keyword">lambda</span> s: s[<span class="string">'grade'</span>], reverse=<span class="keyword">True</span>)
+
+<span class="comment"># Sort by name</span>
+sorted_by_name = <span class="function">sorted</span>(students, key=<span class="keyword">lambda</span> s: s[<span class="string">'name'</span>])</pre>
+          </div>
+
+          <h3>Grouping and Aggregating</h3>
+          <div class="code-block">
+            <pre><span class="comment"># Group by category</span>
+sales = [
+    {<span class="string">'product'</span>: <span class="string">'A'</span>, <span class="string">'amount'</span>: <span class="number">100</span>},
+    {<span class="string">'product'</span>: <span class="string">'B'</span>, <span class="string">'amount'</span>: <span class="number">150</span>},
+    {<span class="string">'product'</span>: <span class="string">'A'</span>, <span class="string">'amount'</span>: <span class="number">200</span>},
+    {<span class="string">'product'</span>: <span class="string">'B'</span>, <span class="string">'amount'</span>: <span class="number">100</span>}
+]
+
+<span class="comment"># Calculate total by product</span>
+totals = {}
+<span class="keyword">for</span> sale <span class="keyword">in</span> sales:
+    product = sale[<span class="string">'product'</span>]
+    <span class="keyword">if</span> product <span class="keyword">not in</span> totals:
+        totals[product] = <span class="number">0</span>
+    totals[product] += sale[<span class="string">'amount'</span>]
+
+<span class="function">print</span>(totals)  <span class="comment"># {'A': 300, 'B': 250}</span>
+
+<span class="comment"># Using dictionary comprehension</span>
+products = <span class="function">set</span>(s[<span class="string">'product'</span>] <span class="keyword">for</span> s <span class="keyword">in</span> sales)
+totals = {p: <span class="function">sum</span>(s[<span class="string">'amount'</span>] <span class="keyword">for</span> s <span class="keyword">in</span> sales <span class="keyword">if</span> s[<span class="string">'product'</span>] == p) <span class="keyword">for</span> p <span class="keyword">in</span> products}</pre>
+          </div>
+
+          <div class="success-box">
+            <strong>💡 Best Practice:</strong> For complex data operations,
+            consider using pandas library. For simple transformations, pure
+            Python is often sufficient and more transparent.
+          </div>
+        </section>
+
+        <!-- STATISTICS SECTION -->
+        <section id="statistics">
+          <h2>📊 Basic Statistics with Python</h2>
+          <p>
+            Perform common statistical calculations using Python's built-in
+            functions.
+          </p>
+
+          <h3>Descriptive Statistics</h3>
+          <div class="code-block">
+            <pre>data = [<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>, <span class="number">92</span>, <span class="number">88</span>, <span class="number">76</span>, <span class="number">95</span>, <span class="number">89</span>]
+
+<span class="comment"># Mean (average)</span>
+mean = <span class="function">sum</span>(data) / <span class="function">len</span>(data)
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Mean: {mean}"</span>)  <span class="comment"># 86.625</span>
+
+<span class="comment"># Median (middle value)</span>
+sorted_data = <span class="function">sorted</span>(data)
+n = <span class="function">len</span>(sorted_data)
+<span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:
+    median = (sorted_data[n//<span class="number">2</span>-<span class="number">1</span>] + sorted_data[n//<span class="number">2</span>]) / <span class="number">2</span>
+<span class="keyword">else</span>:
+    median = sorted_data[n//<span class="number">2</span>]
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Median: {median}"</span>)  <span class="comment"># 88.5</span>
+
+<span class="comment"># Mode (most frequent value)</span>
+<span class="keyword">from</span> collections <span class="keyword">import</span> Counter
+counter = <span class="function">Counter</span>(data)
+mode = counter.<span class="function">most_common</span>(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]
+
+<span class="comment"># Range</span>
+data_range = <span class="function">max</span>(data) - <span class="function">min</span>(data)
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Range: {data_range}"</span>)  <span class="comment"># 19</span>
+
+<span class="comment"># Standard deviation</span>
+variance = <span class="function">sum</span>((x - mean) ** <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> data) / <span class="function">len</span>(data)
+std_dev = variance ** <span class="number">0.5</span>
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Standard Deviation: {std_dev:.2f}"</span>)</pre>
+          </div>
+
+          <h3>Using Statistics Module</h3>
+          <div class="code-block">
+            <pre><span class="keyword">import</span> statistics
+
+data = [<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>, <span class="number">92</span>, <span class="number">88</span>, <span class="number">76</span>, <span class="number">95</span>, <span class="number">89</span>]
+
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Mean: {statistics.mean(data)}"</span>)
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Median: {statistics.median(data)}"</span>)
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Mode: {statistics.mode(data)}"</span>)
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Std Dev: {statistics.stdev(data):.2f}"</span>)
+<span class="function">print</span>(<span class="function">f</span><span class="string">"Variance: {statistics.variance(data):.2f}"</span>)</pre>
+          </div>
+
+          <div class="highlight-box">
+            <strong>🎯 Use Case:</strong> These basic statistics are essential
+            for understanding your data before applying machine learning
+            algorithms or making business decisions.
+          </div>
+        </section>
+
+        <!-- EXERCISES SECTION -->
+        <section id="exercises">
+          <h2>💪 Practice Exercises</h2>
+          <p>Test your knowledge with these hands-on exercises.</p>
+
+          <div class="exercise">
+            <h4>Exercise 1: List Manipulation</h4>
+            <p>Create a list of numbers from 1 to 20. Then:</p>
+            <ul style="margin-left: 20px">
+              <li>Find all even numbers</li>
+              <li>Calculate the sum of all odd numbers</li>
+              <li>Create a new list with squares of numbers divisible by 3</li>
+            </ul>
+          </div>
+
+          <div class="exercise">
+            <h4>Exercise 2: Dictionary Operations</h4>
+            <p>
+              Create a dictionary of students with their grades. Write functions
+              to:
+            </p>
+            <ul style="margin-left: 20px">
+              <li>Find the student with the highest grade</li>
+              <li>Calculate the class average</li>
+              <li>List all students who scored above 85</li>
+            </ul>
+          </div>
+
+          <div class="exercise">
+            <h4>Exercise 3: Data Processing</h4>
+            <p>
+              Given a list of sales transactions with product names and amounts:
+            </p>
+            <ul style="margin-left: 20px">
+              <li>Calculate total sales per product</li>
+              <li>Find the best-selling product</li>
+              <li>Calculate the average transaction amount</li>
+            </ul>
+          </div>
+
+          <div class="exercise">
+            <h4>Exercise 4: File Operations</h4>
+            <p>Create a program that:</p>
+            <ul style="margin-left: 20px">
+              <li>Reads a CSV file with student data</li>
+              <li>Calculates statistics (mean, median, max, min)</li>
+              <li>Writes the results to a new file</li>
+            </ul>
+          </div>
+
+          <div class="exercise">
+            <h4>Exercise 5: Comprehensions Challenge</h4>
+            <p>Use comprehensions to:</p>
+            <ul style="margin-left: 20px">
+              <li>Create a dictionary mapping numbers 1-10 to their cubes</li>
+              <li>Flatten a nested list of lists</li>
+              <li>Extract all vowels from a string into a set</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>🐍 Python for Data Science - Complete Guide</p>
+        <p>Master the fundamentals and build your data science skills!</p>
+        <p style="margin-top: 10px; font-size: 0.9em">Happy Coding! 🚀</p>
+      </footer>
+
+      <a href="#" class="back-to-top">↑</a>
+    </div>
+  </body>
+</html>
