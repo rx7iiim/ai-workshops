@@ -11,9 +11,18 @@ emails = [
     "See you at the office today."
 ]
 
+spam_keywords = ['free', 'offer', 'iphone', 'link', 'lottery', '!!!', 'earn', 'deal', 'discount']
 
-def classify_email():
-      print("write your code here. remember to delete me first :)")
-   
+for email in emails:
+    text = email.lower()
+    is_spam = False
 
+    for word in spam_keywords:
+        if word in text:
+            is_spam = True
+            break
 
+    if is_spam:
+        print(email, "SPAM")
+    else:
+        print(email, " NOT SPAM")
