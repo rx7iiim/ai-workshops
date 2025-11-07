@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandas Beginner Workshop - 3 Hours</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #150050 0%, #3f0071 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: #3f0071;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover {
+            background: #667eea;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+        }
+        
+        h2 {
+            color: #150050;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #3f0071;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+        
+        h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin: 15px 0 10px 0;
+        }
+        
+        .time-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            white-space: pre;
+        }
+        
+        .output {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .note {
+            background: #fff5e6;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .tip {
+            background: #e6f7ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning {
+            background: #fee;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .exercise {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .exercise h4 {
+            color: #059669;
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            background: #3f0071;
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f7fafc;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .card h4 {
+            margin-bottom: 10px;
+        }
+        
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        footer {
+            background: #150050;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐼 Pandas for Beginners</h1>
+            <p>A Complete 3-Hour Workshop Guide</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#setup">Setup</a></li>
+                <li><a href="#series">Series</a></li>
+                <li><a href="#dataframes">DataFrames</a></li>
+                <li><a href="#data-ops">Operations</a></li>
+                <li><a href="#cleaning">Cleaning</a></li>
+                <li><a href="#analysis">Analysis</a></li>
+                <li><a href="#exercises">Exercises</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <section id="intro">
+                <h2>Introduction to Pandas <span class="time-badge">15 minutes</span></h2>
+                
+                <h3>What is Pandas?</h3>
+                <p>Pandas is a powerful Python library for data manipulation and analysis. It provides easy-to-use data structures and data analysis tools.</p>
+                
+                <h3>Key Features</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4>📊 Data Structures</h4>
+                        <p>Series (1D) and DataFrame (2D) for handling structured data</p>
+                    </div>
+                    <div class="card">
+                        <h4>🔧 Data Manipulation</h4>
+                        <p>Easy filtering, grouping, merging, and reshaping</p>
+                    </div>
+                    <div class="card">
+                        <h4>📁 File I/O</h4>
+                        <p>Read/write CSV, Excel, SQL, JSON, and more</p>
+                    </div>
+                    <div class="card">
+                        <h4>📈 Analysis Tools</h4>
+                        <p>Statistical functions, time series, and visualization</p>
+                    </div>
+                </div>
+                
+                <h3>Why Use Pandas?</h3>
+                <ul>
+                    <li>Industry standard for data analysis in Python</li>
+                    <li>Handles missing data gracefully</li>
+                    <li>Intuitive syntax similar to SQL and spreadsheets</li>
+                    <li>Integrates well with NumPy, Matplotlib, and Scikit-learn</li>
+                    <li>Excellent performance for large datasets</li>
+                </ul>
+            </section>
+            
+            <section id="setup">
+                <h2>Setup and Installation <span class="time-badge">10 minutes</span></h2>
+                
+                <h3>Installing Pandas</h3>
+                <div class="code-block">
+                    <code># Using pip
+pip install pandas
+
+# Using conda
+conda install pandas</code>
+                </div>
+                
+                <h3>Importing Pandas</h3>
+                <div class="code-block">
+                    <code>import pandas as pd
+import numpy as np  # Often used together
+
+# Check version
+print(pd.__version__)</code>
+                </div>
+                
+                <div class="tip">
+                    <strong>💡 Convention:</strong> Always import pandas as 'pd' - this is the standard convention used throughout the community.
+                </div>
+            </section>
+            
+            <section id="series">
+                <h2>Pandas Series <span class="time-badge">25 minutes</span></h2>
+                
+                <h3>What is a Series?</h3>
+                <p>A Series is a one-dimensional labeled array that can hold any data type (integers, strings, floats, Python objects, etc.).</p>
+                
+                <h3>Creating a Series</h3>
+                <div class="code-block">
+                    <code># From a list
+s1 = pd.Series([10, 20, 30, 40, 50])
+print(s1)
+
+# From a list with custom index
+s2 = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
+print(s2)
+
+# From a dictionary
+data = {'apple': 5, 'banana': 3, 'cherry': 8}
+s3 = pd.Series(data)
+print(s3)
+
+# From a NumPy array
+s4 = pd.Series(np.random.rand(5))
+print(s4)</code>
+                </div>
+                
+                <div class="output">
+                    <strong>Output (s1):</strong>
+0    10
+1    20
+2    30
+3    40
+4    50
+dtype: int64
+                </div>
+                
+                <h3>Series Attributes</h3>
+                <div class="code-block">
+                    <code>s = pd.Series([10, 20, 30, 40], index=['a', 'b', 'c', 'd'])
+
+print("Values:", s.values)        # Array of values
+print("Index:", s.index)          # Index object
+print("Data type:", s.dtype)      # Data type
+print("Size:", s.size)            # Number of elements
+print("Name:", s.name)            # Series name (None by default)</code>
+                </div>
+                
+                <h3>Accessing Elements</h3>
+                <div class="code-block">
+                    <code>s = pd.Series([10, 20, 30, 40], index=['a', 'b', 'c', 'd'])
+
+# By index label
+print(s['a'])           # 10
+print(s[['a', 'c']])    # Multiple elements
+
+# By position
+print(s[0])             # 10
+print(s[0:2])           # First two elements
+
+# Boolean indexing
+print(s[s > 20])        # Elements greater than 20</code>
+                </div>
+                
+                <h3>Series Operations</h3>
+                <div class="code-block">
+                    <code>s = pd.Series([1, 2, 3, 4, 5])
+
+# Arithmetic operations
+print(s + 10)           # Add 10 to each element
+print(s * 2)            # Multiply each by 2
+print(s ** 2)           # Square each element
+
+# Statistical methods
+print("Mean:", s.mean())
+print("Sum:", s.sum())
+print("Max:", s.max())
+print("Min:", s.min())
+print("Standard deviation:", s.std())
+
+# Other useful methods
+print("Unique values:", s.unique())
+print("Value counts:", s.value_counts())
+print("Is null?:", s.isnull())</code>
+                </div>
+            </section>
+            
+            <section id="dataframes">
+                <h2>Pandas DataFrames <span class="time-badge">40 minutes</span></h2>
+                
+                <h3>What is a DataFrame?</h3>
+                <p>A DataFrame is a 2-dimensional labeled data structure with columns that can be of different types. Think of it as a spreadsheet or SQL table.</p>
+                
+                <h3>Creating DataFrames</h3>
+                
+                <h4>From a Dictionary</h4>
+                <div class="code-block">
+                    <code># Dictionary of lists
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'Age': [25, 30, 35, 28],
+    'City': ['New York', 'Paris', 'London', 'Tokyo'],
+    'Salary': [50000, 60000, 75000, 55000]
+}
+df = pd.DataFrame(data)
+print(df)</code>
+                </div>
+                
+                <div class="output">
+                    <strong>Output:</strong>
+      Name  Age      City  Salary
+0    Alice   25  New York   50000
+1      Bob   30     Paris   60000
+2  Charlie   35    London   75000
+3    David   28     Tokyo   55000
+                </div>
+                
+                <h4>From a List of Dictionaries</h4>
+                <div class="code-block">
+                    <code>data = [
+    {'Name': 'Alice', 'Age': 25, 'City': 'New York'},
+    {'Name': 'Bob', 'Age': 30, 'City': 'Paris'},
+    {'Name': 'Charlie', 'Age': 35, 'City': 'London'}
+]
+df = pd.DataFrame(data)
+print(df)</code>
+                </div>
+                
+                <h4>From CSV File</h4>
+                <div class="code-block">
+                    <code># Read CSV
+df = pd.read_csv('data.csv')
+
+# Read CSV with specific options
+df = pd.read_csv('data.csv', 
+                 sep=',',           # Delimiter
+                 header=0,          # Row number to use as header
+                 index_col=0,       # Column to use as index
+                 na_values=['NA'])  # Additional strings to recognize as NaN</code>
+                </div>
+                
+                <h3>DataFrame Attributes</h3>
+                <div class="code-block">
+                    <code>df = pd.DataFrame(data)
+
+print(df.shape)          # Dimensions (rows, columns)
+print(df.columns)        # Column names
+print(df.index)          # Row indices
+print(df.dtypes)         # Data types of each column
+print(df.info())         # Summary information
+print(df.describe())     # Statistical summary</code>
+                </div>
+                
+                <h3>Viewing Data</h3>
+                <div class="code-block">
+                    <code># First and last rows
+print(df.head())         # First 5 rows
+print(df.head(3))        # First 3 rows
+print(df.tail())         # Last 5 rows
+
+# Random sample
+print(df.sample(3))      # 3 random rows
+
+# Specific columns
+print(df[['Name', 'Age']])
+
+# Column names
+print(df.columns.tolist())</code>
+                </div>
+                
+                <h3>Selecting Data</h3>
+                
+                <h4>Selecting Columns</h4>
+                <div class="code-block">
+                    <code># Single column (returns Series)
+ages = df['Age']
+
+# Multiple columns (returns DataFrame)
+subset = df[['Name', 'City']]
+
+# Using dot notation (only for valid Python identifiers)
+names = df.Name</code>
+                </div>
+                
+                <h4>Selecting Rows</h4>
+                <div class="code-block">
+                    <code># By position (iloc)
+print(df.iloc[0])        # First row
+print(df.iloc[0:3])      # First 3 rows
+print(df.iloc[[0, 2]])   # Rows 0 and 2
+
+# By label (loc)
+df_indexed = df.set_index('Name')
+print(df_indexed.loc['Alice'])         # Row with index 'Alice'
+print(df_indexed.loc['Alice':'Charlie']) # Range
+
+# Boolean indexing
+print(df[df['Age'] > 28])
+print(df[df['City'] == 'Paris'])
+print(df[(df['Age'] > 25) & (df['Salary'] > 55000)])</code>
+                </div>
+                
+                <h4>Selecting Rows and Columns</h4>
+                <div class="code-block">
+                    <code># Using iloc (position-based)
+print(df.iloc[0:3, 1:3])      # Rows 0-2, columns 1-2
+
+# Using loc (label-based)
+print(df.loc[0:2, 'Age':'City'])
+
+# Mixed selection
+print(df.loc[df['Age'] > 28, ['Name', 'Salary']])</code>
+                </div>
+                
+                <h3>Adding and Modifying Data</h3>
+                <div class="code-block">
+                    <code># Add new column
+df['Country'] = 'USA'
+df['Bonus'] = df['Salary'] * 0.1
+
+# Modify existing column
+df['Age'] = df['Age'] + 1
+
+# Add new row
+new_row = {'Name': 'Eve', 'Age': 27, 'City': 'Berlin', 'Salary': 52000}
+df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+
+# Delete column
+df = df.drop('Country', axis=1)
+
+# Delete row
+df = df.drop(0, axis=0)</code>
+                </div>
+            </section>
+            
+            <section id="data-ops">
+                <h2>Data Operations <span class="time-badge">35 minutes</span></h2>
+                
+                <h3>Sorting</h3>
+                <div class="code-block">
+                    <code># Sort by column
+df_sorted = df.sort_values('Age')
+df_sorted = df.sort_values('Age', ascending=False)
+
+# Sort by multiple columns
+df_sorted = df.sort_values(['City', 'Age'])
+
+# Sort by index
+df_sorted = df.sort_index()</code>
+                </div>
+                
+                <h3>Filtering</h3>
+                <div class="code-block">
+                    <code># Single condition
+young = df[df['Age'] < 30]
+
+# Multiple conditions (AND)
+result = df[(df['Age'] > 25) & (df['Salary'] > 50000)]
+
+# Multiple conditions (OR)
+result = df[(df['City'] == 'Paris') | (df['City'] == 'London')]
+
+# Using isin()
+cities = ['Paris', 'Tokyo']
+result = df[df['City'].isin(cities)]
+
+# String methods
+result = df[df['Name'].str.startswith('A')]
+result = df[df['City'].str.contains('on')]</code>
+                </div>
+                
+                <h3>GroupBy Operations</h3>
+                <div class="code-block">
+                    <code>data = {
+    'Department': ['IT', 'HR', 'IT', 'HR', 'IT', 'Sales'],
+    'Employee': ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank'],
+    'Salary': [50000, 45000, 60000, 48000, 55000, 52000]
+}
+df = pd.DataFrame(data)
+
+# Group by single column
+grouped = df.groupby('Department')['Salary'].mean()
+print(grouped)
+
+# Multiple aggregations
+result = df.groupby('Department').agg({
+    'Salary': ['mean', 'sum', 'count'],
+    'Employee': 'count'
+})
+print(result)
+
+# Group by multiple columns
+df['Year'] = [2023, 2023, 2024, 2024, 2023, 2024]
+grouped = df.groupby(['Year', 'Department'])['Salary'].sum()
+print(grouped)</code>
+                </div>
+                
+                <h3>Merging and Joining</h3>
+                <div class="code-block">
+                    <code># Sample dataframes
+df1 = pd.DataFrame({
+    'ID': [1, 2, 3],
+    'Name': ['Alice', 'Bob', 'Charlie']
+})
+
+df2 = pd.DataFrame({
+    'ID': [1, 2, 4],
+    'Salary': [50000, 60000, 55000]
+})
+
+# Inner join (default)
+merged = pd.merge(df1, df2, on='ID')
+
+# Left join
+merged = pd.merge(df1, df2, on='ID', how='left')
+
+# Right join
+merged = pd.merge(df1, df2, on='ID', how='right')
+
+# Outer join
+merged = pd.merge(df1, df2, on='ID', how='outer')
+
+# Concatenate vertically
+combined = pd.concat([df1, df2], ignore_index=True)
+
+# Concatenate horizontally
+combined = pd.concat([df1, df2], axis=1)</code>
+                </div>
+                
+                <h3>Pivot Tables</h3>
+                <div class="code-block">
+                    <code>data = {
+    'Date': ['2024-01-01', '2024-01-01', '2024-01-02', '2024-01-02'],
+    'Product': ['A', 'B', 'A', 'B'],
+    'Sales': [100, 150, 120, 180],
+    'Quantity': [10, 15, 12, 18]
+}
+df = pd.DataFrame(data)
+
+# Create pivot table
+pivot = df.pivot_table(
+    values='Sales',
+    index='Date',
+    columns='Product',
+    aggfunc='sum'
+)
+print(pivot)</code>
+                </div>
+            </section>
+            
+            <section id="cleaning">
+                <h2>Data Cleaning <span class="time-badge">30 minutes</span></h2>
+                
+                <h3>Handling Missing Data</h3>
+                <div class="code-block">
+                    <code>data = {
+    'A': [1, 2, np.nan, 4],
+    'B': [5, np.nan, np.nan, 8],
+    'C': [9, 10, 11, 12]
+}
+df = pd.DataFrame(data)
+
+# Check for missing values
+print(df.isnull())              # Boolean DataFrame
+print(df.isnull().sum())        # Count per column
+print(df.isnull().sum().sum())  # Total count
+
+# Drop missing values
+df_dropped = df.dropna()              # Drop rows with any NaN
+df_dropped = df.dropna(axis=1)        # Drop columns with any NaN
+df_dropped = df.dropna(thresh=2)      # Keep rows with at least 2 non-NaN
+
+# Fill missing values
+df_filled = df.fillna(0)              # Fill with 0
+df_filled = df.fillna(df.mean())      # Fill with column mean
+df_filled = df.fillna(method='ffill') # Forward fill
+df_filled = df.fillna(method='bfill') # Backward fill
+
+# Fill specific columns
+df['A'] = df['A'].fillna(df['A'].mean())</code>
+                </div>
+                
+                <h3>Handling Duplicates</h3>
+                <div class="code-block">
+                    <code>data = {
+    'Name': ['Alice', 'Bob', 'Alice', 'Charlie'],
+    'Age': [25, 30, 25, 35]
+}
+df = pd.DataFrame(data)
+
+# Check for duplicates
+print(df.duplicated())                  # Boolean Series
+print(df.duplicated().sum())            # Count
+
+# Drop duplicates
+df_unique = df.drop_duplicates()
+df_unique = df.drop_duplicates(subset=['Name'])  # Based on specific column
+df_unique = df.drop_duplicates(keep='last')      # Keep last occurrence</code>
+                </div>
+                
+                <h3>Data Type Conversion</h3>
+                <div class="code-block">
+                    <code>df = pd.DataFrame({
+    'A': ['1', '2', '3'],
+    'B': ['4.5', '5.6', '6.7'],
+    'C': ['2024-01-01', '2024-01-02', '2024-01-03']
+})
+
+# Convert types
+df['A'] = df['A'].astype(int)
+df['B'] = df['B'].astype(float)
+df['C'] = pd.to_datetime(df['C'])
+
+# Convert all at once
+df = df.astype({'A': int, 'B': float})
+
+print(df.dtypes)</code>
+                </div>
+                
+                <h3>String Operations</h3>
+                <div class="code-block">
+                    <code>df = pd.DataFrame({
+    'Name': ['  Alice  ', 'BOB', 'charlie', 'David']
+})
+
+# String methods
+df['Name_clean'] = df['Name'].str.strip()      # Remove whitespace
+df['Name_lower'] = df['Name'].str.lower()      # Convert to lowercase
+df['Name_upper'] = df['Name'].str.upper()      # Convert to uppercase
+df['Name_title'] = df['Name'].str.title()      # Title case
+df['Name_len'] = df['Name'].str.len()          # Length
+
+# String replacement
+df['Name'] = df['Name'].str.replace('BOB', 'Bob')
+
+# Extract patterns
+df['First_letter'] = df['Name'].str[0]</code>
+                </div>
+                
+                <h3>Renaming Columns</h3>
+                <div class="code-block">
+                    <code># Rename specific columns
+df = df.rename(columns={'A': 'Column_A', 'B': 'Column_B'})
+
+# Rename all columns
+df.columns = ['col1', 'col2', 'col3']
+
+# Clean column names
+df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')</code>
+                </div>
+            </section>
+            
+            <section id="analysis">
+                <h2>Data Analysis <span class="time-badge">25 minutes</span></h2>
+                
+                <h3>Statistical Analysis</h3>
+                <div class="code-block">
+                    <code>df = pd.DataFrame({
+    'A': [1, 2, 3, 4, 5],
+    'B': [10, 20, 30, 40, 50],
+    'C': [5, 15, 25, 35, 45]
+})
+
+# Basic statistics
+print(df.describe())     # Summary statistics
+print(df.mean())         # Mean of each column
+print(df.median())       # Median
+print(df.std())          # Standard deviation
+print(df.var())          # Variance
+print(df.min())          # Minimum
+print(df.max())          # Maximum
+print(df.quantile(0.25)) # 25th percentile
+
+# Correlation
+print(df.corr())         # Correlation matrix
+print(df['A'].corr(df['B']))  # Correlation between two columns
+
+# Covariance
+print(df.cov())</code>
+                </div>
+                
+                <h3>Apply Functions</h3>
+                <div class="code-block">
+                    <code>df = pd.DataFrame({
+    'A': [1, 2, 3, 4, 5],
+    'B': [10, 20, 30, 40, 50]
+})
+
+# Apply function to column
+df['A_squared'] = df['A'].apply(lambda x: x ** 2)
+
+# Apply function to row
+df['Sum'] = df.apply(lambda row: row['A'] + row['B'], axis=1)
+
+# Apply function to entire DataFrame
+df_doubled = df.apply(lambda x: x * 2)
+
+# Apply multiple functions
+result = df['A'].apply([np.mean, np.std, np.min, np.max])</code>
+                </div>
+                
+                <h3>Value Counts and Crosstab</h3>
+                <div class="code-block">
+                    <code>df = pd.DataFrame({
+    'Color': ['Red', 'Blue', 'Red', 'Green', 'Blue', 'Red'],
+    'Size': ['S', 'M', 'L', 'S', 'M', 'S']
+})
+
+# Count values
+counts = df['Color'].value_counts()
+print(counts)
+
+# Normalize to percentages
+percentages = df['Color'].value_counts(normalize=True)
+print(percentages)
+
+# Crosstab
+ct = pd.crosstab(df['Color'], df['Size'])
+print(ct)</code>
+                </div>
+                
+                <h3>Working with Dates</h3>
+                <div class="code-block">
+                    <code>df = pd.DataFrame({
+    'Date': pd.date_range('2024-01-01', periods=5),
+    'Value': [100, 150, 120, 180, 200]
+})
+
+# Extract date components
+df['Year'] = df['Date'].dt.year
+df['Month'] = df['Date'].dt.month
+df['Day'] = df['Date'].dt.day
+df['DayOfWeek'] = df['Date'].dt.day_name()
+
+# Date arithmetic
+df['Tomorrow'] = df['Date'] + pd.Timedelta(days=1)
+df['Next_week'] = df['Date'] + pd.Timedelta(weeks=1)
+
+# Filter by date
+mask = (df['Date'] >= '
